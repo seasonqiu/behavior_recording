@@ -5,12 +5,14 @@ import csv
 from datetime import datetime
 import sys
 
-path = str(sys.argv[1])
-ser = serial.Serial(path)
+port = str(sys.argv[1])
+save_path = str(sys.argv[2]) + datetime.now().strftime('%Y%m%d_%H%M%S%f') + ".csv"
+
+ser = serial.Serial(port)
 #ser = serial.Serial('/dev/cu.usbmodem1301')
 #ser = serial.Serial('/dev/cu.usbmodem11301')
 ser.flushInput()
-save_path = "/Users/season/buffer/event_log_" + datetime.now().strftime('%Y%m%d_%H%M%S%f') + ".csv"
+#save_path = "/Users/season/buffer/event_log_" + datetime.now().strftime('%Y%m%d_%H%M%S%f') + ".csv"
 first_row = [['time','event','weight']]
 with open(save_path,mode='w',newline='') as file:
     writer = csv.writer(file)
