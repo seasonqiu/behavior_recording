@@ -3,8 +3,11 @@ import serial
 import time
 import csv
 from datetime import datetime
+import sys
 
-ser = serial.Serial('/dev/cu.usbmodem1301')
+path = str(sys.argv[1])
+ser = serial.Serial(path)
+#ser = serial.Serial('/dev/cu.usbmodem1301')
 #ser = serial.Serial('/dev/cu.usbmodem11301')
 ser.flushInput()
 save_path = "/Users/season/buffer/event_log_" + datetime.now().strftime('%Y%m%d_%H%M%S%f') + ".csv"
