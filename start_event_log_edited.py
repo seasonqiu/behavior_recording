@@ -4,11 +4,15 @@ import time
 import csv
 from datetime import datetime
 
-ser = serial.Serial('/dev/cu.usbmodem1301')
+port = str(sys.argv[1])
+save_path = "~/buffer/" + str(sys.argv[2]) + datetime.now().strftime('%Y%m%d_%H%M%S%f') + ".csv"
+ser = serial.Serial(port)
+
+#ser = serial.Serial('/dev/cu.usbmodem1301')
 #ser = serial.Serial('/dev/cu.usbmodem11301')
 ser.flushInput()
-save_path = "/Users/season/buffer/event_log_" + datetime.now().strftime('%Y%m%d_%H%M%S%f') + ".csv"
-first_row = [['time_local','time_arduino','event','weight_lever','sync_state','duration_hold','weight_lever_threshold']]
+#save_path = "/Users/season/buffer/event_log_" + datetime.now().strftime('%Y%m%d_%H%M%S%f') + ".csv"
+first_row = [['time','event','weight_lever','sync_state','duration_hold','weight_lever_threshold']]
 with open(save_path,mode='w',newline='') as file:
     writer = csv.writer(file)
     writer.writerows(first_row)
