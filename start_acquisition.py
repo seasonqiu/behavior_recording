@@ -6,7 +6,7 @@ from datetime import datetime
 import sys
 
 port = str(sys.argv[1])
-save_path = "/home/pi/buffer/" + str(sys.argv[2]) + datetime.now().strftime('%Y%m%d_%H%M%S%f') + ".csv"
+save_path = "/home/pi/buffer/" + str(sys.argv[2]) + "_" + datetime.now().strftime('%Y%m%d_%H%M%S%f') + ".csv"
 ser = serial.Serial(port)
 
 #ser = serial.Serial('/dev/cu.usbmodem1301')
