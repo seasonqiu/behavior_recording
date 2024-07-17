@@ -3,6 +3,7 @@ import serial
 import time
 import csv
 from datetime import datetime
+import sys
 
 port = str(sys.argv[1])
 save_path = "~/buffer/" + str(sys.argv[2]) + datetime.now().strftime('%Y%m%d_%H%M%S%f') + ".csv"
