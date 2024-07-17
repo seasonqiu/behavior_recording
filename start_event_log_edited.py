@@ -14,7 +14,7 @@ ser = serial.Serial(port)
 ser.flushInput()
 #save_path = "/Users/season/buffer/event_log_" + datetime.now().strftime('%Y%m%d_%H%M%S%f') + ".csv"
 first_row = [['time','event','weight_lever','sync_state','duration_hold','weight_lever_threshold']]
-with open(save_path,mode='w',newline='') as file:
+with open(save_path,"a") as file: #mode='w',newline='') as file:
     writer = csv.writer(file)
     writer.writerows(first_row)
 while True:
