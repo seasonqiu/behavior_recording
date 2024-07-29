@@ -13,7 +13,7 @@ ser = serial.Serial(port)
 #ser = serial.Serial('/dev/cu.usbmodem11301')
 ser.flushInput()
 #save_path = "/Users/season/buffer/event_log_" + datetime.now().strftime('%Y%m%d_%H%M%S%f') + ".csv"
-first_row = [['time','event','weight_lever','weight_loadcell','which_light','duration_hold','reward_total','sync_state','weight_lever_threshold']]
+first_row = [['time_local','time_arduino','event','weight_lever','weight_loadcell','which_light','duration_hold','reward_total','sync_state','weight_lever_threshold']]
 with open(save_path,mode='w',newline='') as file:
     writer = csv.writer(file)
     writer.writerows(first_row)
