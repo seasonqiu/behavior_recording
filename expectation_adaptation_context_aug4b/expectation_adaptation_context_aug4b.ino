@@ -73,6 +73,8 @@
 // 2. define the state string
 String state;
 bool baseline = true;
+unsigned long baseline_last_switch = 0;
+const unsigned long baseline_interval = 3600000; // 1 hour in milliseconds
 bool weight_check_lever = false;
 bool weight_check_loadcell = false;
 bool weight_check = false;
@@ -392,6 +394,12 @@ String state_transition() {
   }
   
 void loop() {
+  // Toggle baseline every hour
+  if (millis() - baseline_last_switch >= baseline_interval) {
+    baseline = !baseline;
+    baseline_last_switch = millis();
+    log_event(baseline ? "baseline_on" : "baseline_off", sync_state, duration_hold);
+  }
   // first thing to check always is the weight and the calibration
   lever.set_scale(calibration_factor); //Adjust to this calibration factor
   loadcell.set_scale(calibration_factor); //Adjust to this calibration factor
