@@ -1,13 +1,13 @@
 from PIL import Image
 import os
 
-# Set your screen resolution
-width, height = 1920, 1080  # Replace with your display's resolution
+# Screen resolution
+width, height = 1920, 1080  # Change as needed
 
-# Create a white image
+# Create white image
 img = Image.new("RGB", (width, height), color=(255, 255, 255))
 img_path = "/tmp/white_screen.jpg"
 img.save(img_path, "JPEG")
 
-# Display image using fbi (must run on console, not over SSH)
-os.system(f"sudo fbi -T 1 -a {img_path}")
+# Display image without caption bar
+os.system(f"sudo fbi -T 1 -a --noverbose --once {img_path}")
