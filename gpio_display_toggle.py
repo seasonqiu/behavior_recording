@@ -29,3 +29,27 @@ def main():
     if not os.path.exists(WHITE_IMG_PATH):
         create_solid_image(WHITE_IMG_PATH, (255, 255, 255))
     if not os.path.exists(BLACK_IMG_PATH):
+        create_solid_image(BLACK_IMG_PATH, (0, 0, 0))
+
+    last_state = None
+
+    print("Monitoring GPIO 17...")
+
+    try:
+        while True:
+            state = GPIO.input(PIN)
+            if state != last_state:
+                if state == GPIO.HIGH:
+                    show_image(WHITE_IMG_PATH)
+                else:
+                    show_image(BLACK_IMG_PATH)
+                last_state = state
+            time.sleep(0.1)  # Check every 100ms
+    except KeyboardInterrupt:
+        print("\nExiting...")
+    finally:
+        clear_display()
+        GPIO.cleanup()
+
+if __name__ == "__main__":
+    main()
