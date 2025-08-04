@@ -4,7 +4,7 @@ import os
 import sys
 
 # === Configuration ===
-IMAGE_PATH = "test_image.jpg"  # Replace with your image path
+IMAGE_PATH = "/home/pi/visual_stimulation/white_fullscreen.jpg"  # Replace with your image path
 FULLSCREEN = True              # Set to False if you want windowed display
 
 # === Check image file ===
