@@ -5,13 +5,13 @@ import csv
 from datetime import datetime
 import sys
 
-port = str(sys.argv[1])
-save_path = "/home/pi/buffer/" + str(sys.argv[2]) + "_" + datetime.now().strftime('%Y%m%d_%H%M%S%f') + ".csv"
-ser = serial.Serial(port, baudrate=921600)
+# port = str(sys.argv[1])
+# save_path = "/home/pi/buffer/" + str(sys.argv[2]) + "_" + datetime.now().strftime('%Y%m%d_%H%M%S%f') + ".csv"
+# ser = serial.Serial(port)
 # ...existing code...
-# port = "COM7"
-# save_path = "C:\\Users\\amira\\behavior_buffer\\" + datetime.now().strftime('%Y%m%d_%H%M%S%f') + ".csv"
-# ser = serial.Serial(port, baudrate=921600)
+port = "COM7"
+save_path = "C:\\Users\\amira\\behavior_buffer\\" + datetime.now().strftime('%Y%m%d_%H%M%S%f') + ".csv"
+ser = serial.Serial(port, baudrate=921600)
 time.sleep(2)  # wait for the serial connection to initialize
 # ...existing code...
 #ser = serial.Serial('/dev/cu.usbmodem1301')
